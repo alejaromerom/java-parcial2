@@ -12,7 +12,7 @@ public class Controlador {
 		consola = new Consola();
 	}
 
-	public void iniciar() {
+	public void iniciar() throws Exception {
 		int opcion = 0;
 		do {
 			opcion = consola.readInt("1. Ingresar datos del empleado\n2. Salir\nIngrese una opcion: ");
@@ -30,14 +30,14 @@ public class Controlador {
 		} while (opcion != 2);
 	}
 
-	private void ingresarDatos() {
+	private void ingresarDatos() throws Exception {
 		empleado.setId(consola.readInt("Ingrese el id: "));
 		empleado.setNombre(consola.readString("Ingrese el nombre: "));
 		empleado.setSalario(consola.readDouble("Ingrese el salario: "));
 		calcularDatos();
 	}
 
-	private void calcularDatos() {
+	private void calcularDatos() throws Exception {
 		double nuevoSalario = 0;
 		if (empleado.getSalario() > 0 && empleado.getSalario() <= 1000000) {
 		nuevoSalario = empleado.getSalario() + (empleado.getSalario() * 0.20);
@@ -54,7 +54,7 @@ public class Controlador {
 		System.out.println("El nuevo salario de " + empleado.getNombre() + " es: " + nuevoSalario);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Controlador controlador = new Controlador();
 		controlador.iniciar();
 	}
